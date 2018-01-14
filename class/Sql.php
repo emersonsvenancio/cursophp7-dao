@@ -5,12 +5,12 @@ class Sql extends PDO { // Sql herda de PDO: tudo o que o PDO faz a classe tambÃ
 	private $conn;
 
 	public function __construct(){
-		$this->conn = new PDO("mysql:host=localhost;dbname=rn_db", "root", "");
+		$this->conn = new PDO("mysql:host=localhost;dbname=dash_db", "root", "");
 	}
 
 	private function setParams($statment, $parameters = array()){
         foreach($parameters as $key => $value){
-            $this->setParam($statement, $key, $value);
+            $this->setParam($statment, $key, $value);
         }
     }
 

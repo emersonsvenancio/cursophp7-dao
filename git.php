@@ -13,4 +13,9 @@
 
 										 Agora é só criar os arquivos na pasta DAO local.
 
+
+	Para adicionar as alterações: git add --all
+								  git commit -m "Iniciamos o projeto"
+								  git push origem master // para mandar os arquivos para o repositorio
+
  ?>
