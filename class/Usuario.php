@@ -47,6 +47,50 @@
 			}
 		}
 
+
+		public static function getList(){
+
+			$sql = new Sql();
+
+			return $sql->select("SELECT * FROM tb_clientes ORDER BY id_Cliente");
+
+		}
+
+
+		public static function search($login){
+
+			$sql = new Sql();
+
+			return $sql->select("SELECT * FROM tb_clientes WHERE Nome_Cliente LIKE :SEARCH ORDER BY id_Cliente", array(
+				':SEARCH'=>"%". $login. "%"
+			));
+
+		}
+
+		public function login($login,$password) {
+
+				$sql = new Sql();
+
+			$results = $sql->select("SELECT * FROM tb_clientes where Nome_Cliente LIKE :LOGIN AND id_Cliente = :PASSWORD", array(
+				':LOGIN'=>"%". $login. "%",
+				':PASSWORD'=>$password
+
+			));
+
+			if (count($results) > 0) {
+
+				$row = $results[0];
+
+				$this->setIdcliente($row['id_Cliente']);
+				$this->setDesnomecliente($row['Nome_Cliente']);
+				$this->setDesresponsavel($row['Responsavel']);
+
+			} else {
+
+				throw new Exception("Usuário ou senha inválido");			
+			}
+		}
+
 		public function __toString(){
 
 			return json_encode(array(
