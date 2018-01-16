@@ -11,21 +11,32 @@
 	//echo json_encode($lista);
 
 	//Carrega um a lista de usuários buscando pelo login e senha
-
-	$usuario = new Usuario();
-	$usuario->login("San","9");
-	echo ($usuario);
+	//$usuario = new Usuario();
+	//$usuario->login("San","9");
+	//echo ($usuario);
 
 	//Carrega um a lista de usuários buscando pelo login
 	//$search = Usuario::search("San");
 	//echo json_encode($search);
-
-
-
 
 	//Carrega um a lista de usuários buscando pelo login e a senha
 	//$sql = new Sql();
 	//$clientes = $sql->select("SELECT * FROM tb_clientes");
 	//echo json_encode($clientes);
 
+	$cliente = new Usuario("Miguel", "My Jesus");
+	//$cliente->setDesnomecliente("Miguel");
+	//$cliente->setDesresponsavel("My GOD");
+
+	//Criando novo usuário
+	//$cliente-> insert();
+	//echo $cliente;
+
+	$cliente = new Usuario();
+
+	$cliente->loadById(12);
+
+	$cliente->update("Emerson", "Our GOD");
+
+	echo $cliente;
 ?>

@@ -2,7 +2,7 @@
 
 /*  ir até a pasta htdocs, 
 	criar a pasta DAO
-	Dentro da pasta clicar com o botão direito e escolher Git Bash Here
+	Dentro da pasta DAO clicar com o botão direito e escolher Git Bash Here
 	iniciar um Repositório com o comando >>>> git init   // vai criar a pasta oculta do git
 
 	Entrar no meu github.com (emersan@msn.com  esv101510)

@@ -38,12 +38,7 @@
 
 			if (count($results) > 0) {
 
-				$row = $results[0];
-
-				$this->setIdcliente($row['id_Cliente']);
-				$this->setDesnomecliente($row['Nome_Cliente']);
-				$this->setDesresponsavel($row['Responsavel']);
-
+				$this->setData($results[0]);
 			}
 		}
 
@@ -79,16 +74,57 @@
 
 			if (count($results) > 0) {
 
-				$row = $results[0];
-
-				$this->setIdcliente($row['id_Cliente']);
-				$this->setDesnomecliente($row['Nome_Cliente']);
-				$this->setDesresponsavel($row['Responsavel']);
+				$this->setData($results[0]);
 
 			} else {
 
 				throw new Exception("Usuário ou senha inválido");			
 			}
+		}
+
+		public function setData($data){
+
+				$this->setIdcliente($data['id_Cliente']);
+				$this->setDesnomecliente($data['Nome_Cliente']);
+				$this->setDesresponsavel($data['Responsavel']);
+
+		}
+		public function insert() {
+
+			$sql = new Sql();
+			$results = $sql->select("CALL sp_usuarios_insert(:NOME, :RESPONSAVEL)", array(
+				':NOME'=>$this->getDesnomecliente(),
+				':RESPONSAVEL'=>$this->getDesresponsavel()
+			));
+
+			if (count($results) > 0) {
+				$this->setData($results[0]);
+			}
+
+		}
+
+	
+		public function update($nome, $responsavel) {
+
+			$this->setDesnomecliente($nome);
+			$this->setDesresponsavel($responsavel);
+
+			$sql = new Sql();
+
+			$sql->query("UPDATE tb_clientes SET Nome_Cliente = :NOME, Responsavel = :RESPONSAVEL WHERE id_Cliente = :ID", array(
+
+				':NOME'=>$this->getDesnomecliente(),
+				':RESPONSAVEL'=>$this->getDesresponsavel(),
+				':ID'=>$this->getIdcliente()
+			));
+
+		}
+
+		public function __construct($nome= "", $responsavel = "") {
+
+			$this->setDesnomecliente($nome);
+			$this->setDesresponsavel($responsavel);
+
 		}
 
 		public function __toString(){
