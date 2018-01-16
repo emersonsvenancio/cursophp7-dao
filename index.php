@@ -24,19 +24,31 @@
 	//$clientes = $sql->select("SELECT * FROM tb_clientes");
 	//echo json_encode($clientes);
 
-	$cliente = new Usuario("Miguel", "My Jesus");
-	//$cliente->setDesnomecliente("Miguel");
-	//$cliente->setDesresponsavel("My GOD");
-
-	//Criando novo usuário
+	//Inserir um novo usuário COM método construtor
+	//$cliente = new Usuario("Miguel", "My Jesus");
 	//$cliente-> insert();
 	//echo $cliente;
 
+
+	//Inserir um novo usuário SEM método construtor
+	//$cliente->setDesnomecliente("Miguel");
+	//$cliente->setDesresponsavel("My GOD");
+	//$cliente-> insert();
+	//echo $cliente;
+
+	//Update 
+	//$cliente = new Usuario();
+	//$cliente->loadById(12);
+	//$cliente->update("Emerson", "Our GOD");
+	//echo $cliente;
+
 	$cliente = new Usuario();
-
-	$cliente->loadById(12);
-
-	$cliente->update("Emerson", "Our GOD");
+	
+	$cliente->loadById(14);
+	
+	$cliente->delete();
 
 	echo $cliente;
+	
+
 ?>

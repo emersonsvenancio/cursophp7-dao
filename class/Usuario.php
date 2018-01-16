@@ -120,6 +120,23 @@
 
 		}
 
+		public function delete(){
+
+			$sql = new Sql();
+
+			$sql->query("DELETE FROM tb_clientes WHERE id_Cliente = :ID", array(
+
+				':ID'=>$this->getIdcliente()
+
+			));
+
+			$this->setIdcliente(0);
+			$this->setDesnomecliente("");
+			$this->setDesresponsavel("");
+
+
+		}
+
 		public function __construct($nome= "", $responsavel = "") {
 
 			$this->setDesnomecliente($nome);
